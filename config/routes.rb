@@ -1,6 +1,7 @@
 SampleApp::Application.routes.draw do
  
   get "users/new"
+  resources :users
 
   #routes for static pages
   match '/signup', :to => 'users#new'
