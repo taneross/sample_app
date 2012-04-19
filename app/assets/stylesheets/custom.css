@@ -179,3 +179,16 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+
+.pageinate_shell nav {
+	text-align: left;
+	background-color: #333;
+}

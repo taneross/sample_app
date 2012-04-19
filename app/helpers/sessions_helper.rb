@@ -16,11 +16,27 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end
+  
   def sign_out
     cookies.delete(:remember_token)
     self.current_user = nil
   end
-
+  
+  def current_user?(user)
+      user == current_user
+  end
+  
+  def deny_access
+      store_location
+      redirect_to signin_path, :notice => "Please sign in to access this page." #same as
+      #flash[:notice] = "Please sign in to access this page."
+      #redirect_to signin_path
+  end
+  
+  def redirect_back_or(default)
+      redirect_to(session[:return_to] || default)
+      clear_return_to
+    end
 
   private
 
@@ -31,5 +47,12 @@ module SessionsHelper
       def remember_token
         cookies.signed[:remember_token] || [nil, nil]
         #The reason for this code is that the support for signed cookies inside Rails tests is still immature, and a nil value for the cookie causes spurious test breakage. Returning [nil, nil] instead fixes the issue.
-      end  
+      end 
+      def store_location
+          session[:return_to] = request.fullpath
+        end
+
+        def clear_return_to
+          session[:return_to] = nil
+        end 
 end

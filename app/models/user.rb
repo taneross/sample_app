@@ -1,5 +1,7 @@
 require 'digest'
 class User < ActiveRecord::Base
+  paginates_per 20 #kaminari gem
+  
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
