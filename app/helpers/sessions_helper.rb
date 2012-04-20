@@ -25,7 +25,11 @@ module SessionsHelper
   def current_user?(user)
       user == current_user
   end
-  
+
+  def authenticate
+      deny_access unless signed_in? #At the time, we only needed authenticate in the Users controller, but now we find that we need it in the Microposts controller as well, so we’ll move authenticate into the Sessions helper
+    end
+
   def deny_access
       store_location
       redirect_to signin_path, :notice => "Please sign in to access this page." #same as

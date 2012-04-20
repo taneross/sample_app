@@ -2,6 +2,7 @@ SampleApp::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :destroy]
   
   #routes for sign in sign out
     match '/signup',  :to => 'users#new'

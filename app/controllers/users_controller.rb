@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
       @title = @user.name
+      @microposts = @user.microposts.page params[:page] #kaminari gem
   end
   
   def create
@@ -57,9 +58,9 @@ class UsersController < ApplicationController
     
     private
 
-        def authenticate
-          deny_access unless signed_in? #sessions_helper
-        end  
+       # def authenticate   #removed because mircroposts needed it, now in sessions_helper
+          #deny_access unless signed_in? #sessions_helper
+        #end  
         
         def correct_user
               @user = User.find(params[:id])
