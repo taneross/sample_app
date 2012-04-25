@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'annotate', '2.4.0'
-
+gem 'bootstrap-sass', '2.0.0'
 
 gem 'sqlite3'
 
@@ -10,6 +10,7 @@ gem 'json'
 
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'kaminari'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

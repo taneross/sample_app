@@ -1,18 +1,25 @@
 <% if signed_in? %>
-  <table class="front" summary="For signed-in users">
-    <tr>
-      <td class="main">
-        <h1 class="micropost">What's up?</h1>
-        <%= render 'shared/micropost_form' %>
-        <%= render 'shared/feed' %>
-      </td>
-      <td class="sidebar round">
+  <div class="row">
+    <div class="span4">    
+	<section>
         <%= render 'shared/user_info' %>
-      </td>
-    </tr>
-  </table>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+		<p>
+		<h6>Shared posts</h6>
+        <%= render 'shared/micropost_form' %>
+      </section>
+ </div>
+	<div class="span8">
+	<h1 class="micropost">What's up?</h1>	
+      <%= render 'shared/feed' %>
+</div>
+</div>
 <% else %>
-  <h1>Sample App</h1>
+  <h1>Welcome</h1>
 
   <p>
     This is the home page for the
@@ -20,5 +27,6 @@
     sample application.
   </p>
 
-  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+  <%= link_to "Sign up now!", signup_path, :class => "btn btn-large btn-primary" %>
 <% end %>
+

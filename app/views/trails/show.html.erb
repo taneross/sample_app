@@ -1,0 +1,11 @@
+<% provide(:title, @trail.title) %>
+<aside class="span5">
+	
+	<h3><%= @trail.title %></h3>
+
+	<p>	<%= @trail.description %>
+
+	<p>	<%= @trail.twitter %>
+	<p>	<%= link_to "Edit Trail Settings", edit_trail_path, :class => "btn" %>
+
+  </aside>

@@ -1,8 +1,15 @@
 SampleApp::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    member do # the member method means that the routes respond to URIs containing the user id. 
+      get :following, :followers
+    end
+  end
+  
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
+  resources :trails
   
   #routes for sign in sign out
     match '/signup',  :to => 'users#new'
