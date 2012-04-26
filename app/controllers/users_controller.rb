@@ -71,6 +71,8 @@ class UsersController < ApplicationController
         @users = @user.followers.order(:name).page params[:page] #kaminari gem
         render 'show_follow'
       end
+      
+ 
     
     
     private

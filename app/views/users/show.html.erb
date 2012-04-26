@@ -11,11 +11,21 @@
         <%= render 'shared/stats' %>
       </section>
 	<section>
+		
 		<%= render 'follow_form' if signed_in? %>
 		<% if current_user == @user %>
 		     <%= link_to "Change Profile Settings", edit_user_path(current_user), :class => "btn" %></li>
 		<% end %>
 		</section>
+	<section>
+		<%= link_to "Create A New Trail", new_trail_path, :class => "btn"%>
+		</section>
+		<section>
+		<h6> The Trails of: <%= @user.trails.count %> </h6><br>
+		<% @user.trails.each do |trail| %>
+		  <li><%= link_to trail.title, trail %></li>
+		<% end %>
+	</section>
 
 
   </aside>

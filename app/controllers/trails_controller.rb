@@ -6,11 +6,16 @@ class TrailsController < ApplicationController
   end
   
   def create
-     @trail = Trail.new(params[:trail])
+    @user = current_user
+    @creation = @user.creations.create(params[:creation])
+    @trail = Trail.new(params[:trail])
+    @trail.user_id = current_user.id
+    @trail.creation_id = @creation.id
+     
      if @trail.save
        redirect_to @trail
      else
-       @title = "You didn't create one"
+       flash.now[:error] = "Title and Description required"
        render 'new'
      end
   end
@@ -31,3 +36,5 @@ class TrailsController < ApplicationController
   end
  
 end
+
+
