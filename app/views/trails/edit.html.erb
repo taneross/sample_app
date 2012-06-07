@@ -1,13 +1,11 @@
 <h1>Edit Trail Settings</h1>
-
 <%= form_for(@trail) do |f| %>
-
-   <%= f.label :title %>
-   <%= f.text_field :title %>
-   <%= f.label :description %>
-   <%= f.text_area :description, :size => "30x10"%>
-   <%= f.label :twitter %>
-   <%= f.text_field :twitter %>
-	<p>
-   <%= f.submit "Update Trail", :class => "btn" %>
+	<%= render 'form', :f => f %>
+	<p><br>
+	<%= f.submit "Update Trail", :class => "btn" %>
+	<%= link_to "Cancel", @trail, :class => "btn" %>
+	<%= link_to "Delete Trail", @trail, 	 :class => "btn btn-danger",
+									 		:method => :delete,
+                                     		:confirm => "You sure you want to delete this trail?",
+                                     		:title => @trail.title %>
 <% end %>

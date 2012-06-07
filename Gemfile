@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'annotate', '2.4.0'
 gem 'bootstrap-sass', '2.0.0'
+gem "ruby-debug"
 
 gem 'sqlite3'
 
@@ -10,6 +11,8 @@ gem 'json'
 
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'kaminari'
+
+gem 'paperclip'
 
 
 group :assets do
@@ -19,7 +22,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 1.0.12'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

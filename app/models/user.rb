@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   paginates_per 20 #kaminari gem
   
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :typeof
   
   has_many :microposts, :dependent => :destroy
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
@@ -11,9 +11,7 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
   
-  has_many :creations, :dependent => :destroy
-  has_many :trails, :through => :creations
-  
+  has_many :trails, :dependent => :destroy
 
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

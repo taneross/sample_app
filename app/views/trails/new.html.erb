@@ -1,12 +1,7 @@
 <h1>Make a New Trail</h1>
 
 <%= form_for(@trail) do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :description %>
-    <%= f.text_area :description, :size => "30x10"%>
-    <%= f.label :twitter %>
-    <%= f.text_field :twitter %>
+	<%= render 'form', :f => f %>
 	<p>
     <%= f.submit "Create Trail", :class => "btn" %>
 

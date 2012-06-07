@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @title = "Sign Up"
-    
+    @user.typeof = "player"
   end
   
   def destroy

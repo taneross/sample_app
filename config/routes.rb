@@ -9,7 +9,20 @@ SampleApp::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  resources :trails
+  resources :trails do
+      resources :chapters
+  end
+  
+  resources :trails do
+    member do
+      put 'publish'
+    end
+  end
+  
+  resources :chapters do
+    resources :clue, :name_prefix => "chapter_"
+  end
+  
   
   #routes for sign in sign out
     match '/signup',  :to => 'users#new'
@@ -23,6 +36,9 @@ SampleApp::Application.routes.draw do
   match '/help', :to => 'pages#help'
   match '/home', :to => 'pages#home'
   root :to => 'pages#home'
+  
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

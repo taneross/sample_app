@@ -18,13 +18,16 @@
 		<% end %>
 		</section>
 	<section>
-		<%= link_to "Create A New Trail", new_trail_path, :class => "btn"%>
+		<% if @user.typeof == "Creator"%>
+			<%= link_to "Create A New Trail", new_trail_path, :class => "btn"%>
+		<% end %>
+		<% if @user.typeof == "Studio"%>
+			<%= link_to "Create A New Trail", new_trail_path, :class => "btn"%>
+		<% end %>
 		</section>
 		<section>
-		<h6> The Trails of: <%= @user.trails.count %> </h6><br>
-		<% @user.trails.each do |trail| %>
-		  <li><%= link_to trail.title, trail %></li>
-		<% end %>
+		<h6> Your Trails: <%= @user.trails.count %> </h6><br>
+		<%= render 'shared/trails' %>
 	</section>
 
 

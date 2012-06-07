@@ -18,7 +18,11 @@
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+	<div class="field">
+    	<%= f.label :typeof, "Account Type" %><br />
+    	<%= f.select :typeof, options_for_select([["Standard", "player"], ["Creator", "creator"], ["Studio", "studio"]]) %>
+  </div>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :class => "btn" %>
   </div>
 <% end %>

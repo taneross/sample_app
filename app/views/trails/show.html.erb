@@ -1,12 +1,36 @@
+<% logger.info("NOTE: !!!!!!!!!!!!!!!!!!!!!!!!!") %>
 <% provide(:title, @trail.title) %>
-<aside class="span5">
-	<h6>CREATOR: <%= current_user.name %> | index: <%= @trail.user_id %> | creation index:<%= @trail.creation_id %></h6>
-	<h3><%= @trail.title %></h3>
-
-	<p>	<%= @trail.description %>
-
-	<p>	<%= @trail.twitter %>
-	<p>	<%= link_to "Edit Trail Settings", edit_trail_path, :class => "btn" %>
+	<h6>CREATOR: <%= @trail.user.name %> | trail index: <%= @trail.id %> | chapter count: <%= @trail.chapters.count %></h6>
+	<p>	
+	<% if current_user?(@trail.user) %>
+		<%= link_to "Edit Trail", edit_trail_path, :class => "btn" %>
+	<% end %>
+	<p>
+	<p>
+		<% if @trail.cover? %>
+			<%= image_tag @trail.cover.url(:medium) %>
+		<% end %>
+		<h3><%= @trail.title %></h3>
+		<p>	<%= @trail.description %>
+			
+		<% if @trail.twitter? %>
+			<p>
+			<h6>Contact</h6>
+			<p>	<%= @trail.twitter %>
+		<% end %>
 		
-	
-  </aside>
+		<p><h6>Trail settings</h6>
+		<h3>Status: <%= isPublished %></h3>
+		
+		<p>
+		Start: <%= isRecurring %>
+	</p>
+	<p>
+		<h6>Chapters</h6>
+		<p>
+			<ol>
+	        	<%= render 'shared/chapter' %>
+	      	</ol>
+		<%= link_to "Add A New Chapter", new_trail_chapter_path(@trail), :class => "btn" %>
+	</p>
+
